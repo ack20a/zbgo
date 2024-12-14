@@ -3,7 +3,7 @@ FROM alpine:latest
 WORKDIR /app
 
 # Download the pre-built binary
-RUN wget https://github.com/layou233/ZBProxy/releases/download/v3.1-beta.2/ZBProxy-linux-amd64-v1 -O ZBProxy-linux \
+RUN wget https://github.com/layou233/ZBProxy/releases/download/3.0-rc.4/ZBProxy-linux-amd64 -O ZBProxy-linux \
     && chmod +x ZBProxy-linux
 
 # Create the default configuration file
@@ -32,6 +32,9 @@ COPY <<EOF /app/ZBProxy.json
                 "AnyDestSettings": {},
                 "MotdFavicon": "{DEFAULT_MOTD}",
                 "MotdDescription": "§d{NAME}§e service is working on §a§o{INFO}§r§c§lProxy for §6§n{HOST}:{PORT}§r"
+            },
+            "TLSSniffing": {
+                "RejectNonTLS": false
             },
             "Outbound": {
                 "Type": ""
